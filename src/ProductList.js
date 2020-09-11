@@ -7,10 +7,8 @@ import CartIcons from "./CartIcons";
 function ProductList() {
   const products = useSelector(st => st.products);
   const dispatch = useDispatch()
-  const handleClick = e => {
-    e.preventDefault()
-    dispatch()
-  }
+  const add = (id) => dispatch(addToCart(id))
+  const remove = (id) => dispatch(removeFromCart(id))
 
   const productCards = Object.keys(products).map(id => (
     <div className="col-md-3 mb-3" key={id}>
@@ -20,8 +18,8 @@ function ProductList() {
             <Link to={`/products/${id}`}>{products[id].name}</Link>
           </h2>
           <CartIcons id={id} />
-          <button onClick={addToCart(id)}>Add to Cart</button>
-          <button  onClick={removeFromCart(id)}>Remove from Cart</button>
+          <button onClick={()=> add(id)}>Add to Cart</button>
+          <button  onClick={()=> remove(id)}>Remove from Cart</button>
         </div>
       </div>
     </div>

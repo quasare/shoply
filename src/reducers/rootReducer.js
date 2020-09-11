@@ -17,6 +17,7 @@ const DEFAULT_STATE = {
 };
 
 function rootReducer(state = DEFAULT_STATE, action) {
+  console.log(state);
     switch (action.type) {
       case ADD_TO_CART: {
         const cartCopy = { ...state.cartItems };
